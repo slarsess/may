@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Login</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'secrets/css/style.css' %}" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+  <body class="darkestBG">
+  <div class="container">
+    <div class="row">
+    <h1>You should register to this awesome site</h1>
+    {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <li>
+        {{message}}
+      </li>
+      {% endfor %}
+    {% endif %}
+    </ul>
+    </div>
+      <div class="row">
+        <div class=" darkBG col-md-6">
+          <form action="{% url 'logapp:login' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="text" class="form-control" name="email" placeholder="joe@something.com" />
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input type="password" class="form-control" name="password" />
+            </div>
+            <div class="form-group">
+              <input type="submit" value="Login" />
+            </div>
+          </form>
+        </div>
+        <div class=" darkerBG col-md-6">
+          <form action="{% url 'logapp:register' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="first_name">First Name:</label>
+              <input type="text" class="form-control" name="first_name"/>
+            </div>
+            <div class="form-group">
+              <label for="last_name">Last Name:</label>
+              <input type="text" class="form-control" name="last_name" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="text" class="form-control" name="email" />
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input type="password" class="form-control" name="password" />
+            </div>
+            <div class="form-group">
+              <label for="confirm">Confirm Password:</label>
+              <input type="password" class="form-control" name="confirm" />
+            </div>
+            <div class="form-group">
+              <input type="submit" value="Register" />
+            </div>
+          </form>
+        </div>
+      </div>
+
+  </div>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <!-- <script src="js/bootstrap.min.js"></script> -->
+  </body>
+</html>
